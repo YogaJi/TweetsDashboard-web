@@ -1,0 +1,64 @@
+body{
+    background-color: grey
+}
+.first-pad{
+    margin-inline: auto;
+    margin-top: 2%;
+
+}
+.div1{
+    background-color: white;
+    width:100%;
+        margin-right: 1%;
+        padding-top: 2%;
+
+}
+.div2{
+    margin-left: 1%;
+    width:40%;
+
+}
+#TwPerDayDiv{
+    width:80%;
+    height:10%;
+    margin:auto;
+}
+.previous{
+    margin-top: 4%;
+}
+.previous-period{
+    background-color: yellow;
+}
+.previous-month{
+    background-color: green;
+}
+.count-center{
+    text-align: center;
+}
+.col p{
+    font-size: 9px;
+}
+.line-pad{
+    background-color: white;
+    margin-top: 2%;
+    padding-bottom: 2%;
+}
+.mult-pad{
+    background-color: white;
+    margin-top: 2%;
+    padding-bottom: 2%;
+}
+.line-pad-title{
+    display: flex;
+    justify-content: space-between;
+    margin-inline: 2%;
+    padding-top: 2%;
+}
+.line-pad-time{
+    display: flex;
+    width: 30%;
+    justify-content: space-around;
+}
+.TwPerDayData{
+    text-align: center;
+}
