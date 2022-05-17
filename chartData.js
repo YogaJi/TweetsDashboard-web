@@ -38,6 +38,12 @@ const myChart2 = new Chart(ctx2, {
         }]
     },
     options: {
+
+        title: {
+            display: true,
+            text: 'tweets Sentiments Percentage Breakdown',
+            fontColor: "#f00",
+        },
         responsive:true,
         aspectRatio:6,
         maintainAspectRatio:false,
@@ -57,10 +63,23 @@ const myChart2 = new Chart(ctx2, {
                   'rgb(255, 99, 132)',
                   'rgb(54, 162, 235)',
                   'rgb(255, 205, 86)'
-                ],
+              ],
                 position:'outside',
                 textMargin: 6,
-            }
+            },
+            datalabels:{
+                color: 'white',
+                labels: {
+                  // title: {
+                  //   font: {
+                  //     weight: 'bold'
+                  //   }
+                  // },
+                  // value: {
+                  //   color: 'green'
+                  // }
+                }
+            }//datalabels
         }
     },
     plugins:[ChartDataLabels]

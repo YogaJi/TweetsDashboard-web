@@ -23,12 +23,13 @@ $.ajax({
                for(let key in obj){
 
                    if(key === "date"){
+                       console.log(obj[key]);
                        var leg = Object.keys(obj[key]).length;
                        for(i = 0; i< leg; i++){
                            var dates = getDates(obj[key][i]);
                            rawDateArr.push(dates)
                        }
-                        //console.log("rawDateArr:",rawDateArr);
+                        console.log("rawDateArr:",rawDateArr);
 
                        var countTweets = [];
                        for (var i = 0; i < rawDateArr.length; i++) {
@@ -44,7 +45,7 @@ $.ajax({
                          for(i = 0; i< arr1.length; i++){
                              dateArr.push(arr1[i])
                          }
-                         //console.log("dateArr:",dateArr);
+                         console.log("dateArr:",dateArr);
                          var arr2 = Object.values(countTweets);
                          for(i = 0; i< arr2.length; i++){
                              tweetsPerDayArr[i] = arr2[i]
@@ -101,7 +102,7 @@ function  getDates(timestamp) {
          Y = date.getFullYear() +  '-' ;
          M = (date.getMonth()+1 < 10 ?  '0' +(date.getMonth()+1) : date.getMonth()+1) +  '-' ;
 
-         D =(date.getDate()+1 < 10 ?  '0' +(date.getDate()+1) : date.getDate());
+         D =(date.getDate() < 10 ?  '0' +(date.getDate()) : date.getDate());
          return  M+D;
      }
 //get full dates format: 2022-05-11

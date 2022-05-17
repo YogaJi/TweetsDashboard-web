@@ -1,13 +1,16 @@
 /* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) {
-
+@media (min-width: 10px) {
+     .piechartDiv {
+        height: 130px;
+        margin-top: 1%;
+    }
 }
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
-    .piechartDiv {
+     .piechartDiv {
         height: 140px;
-        margin-top: 1%;
+        margin-top: 2%;
     }
  }
 
