@@ -33,12 +33,61 @@ const myChart2 = new Chart(ctx2, {
               'rgb(54, 162, 235)',
               'rgb(255, 205, 86)'
             ],
-            hoverOffset: 4,
-            tension: 0.1
+            tension: 0.1,
+            hoverOffset: 10
         }]
     },
     options: {
         responsive:true,
-        aspectRatio:4
+        aspectRatio:6,
+        maintainAspectRatio:false,
+        layout:{
+            padding: 10
+        },
+        plugins: {
+            legend: {
+                display: true,
+                position:'chartArea',
+                align:'start',
+            },
+            labels:{
+                render: 'Percentage',
+                fontStyle: 'border',
+                fontColor: [
+                  'rgb(255, 99, 132)',
+                  'rgb(54, 162, 235)',
+                  'rgb(255, 205, 86)'
+                ],
+                position:'outside',
+                textMargin: 6,
+            }
+        }
+    },
+    plugins:[ChartDataLabels]
+});
+
+//muti line chart
+const ctx3 = document.getElementById('multlinechart')
+const mixedChart = new Chart(ctx3, {
+    data: {
+        datasets: [{
+            type: 'line',
+            label: 'postive',
+            data: postiveCountArrData,
+
+            borderColor: 'rgb(255, 205, 86)'
+        }, {
+            type: 'line',
+            label: 'negative',
+            data: neutralCountArrData,
+
+            borderColor: 'rgb(255, 99, 132)'
+        }, {
+            type: 'line',
+            label: 'nutural',
+            data: negativeCountArrData,
+            borderColor: 'rgb(54, 162, 235)'
+        }],
+        labels: dateArr
     }
 });

@@ -1,5 +1,5 @@
 body{
-    background-color: grey
+    background-color: #F5F6FA
 }
 .first-pad{
     margin-inline: auto;
@@ -43,10 +43,12 @@ body{
     margin-top: 2%;
     padding-bottom: 2%;
 }
-.mult-pad{
+.multi-pad{
     background-color: white;
     margin-top: 2%;
-    padding-bottom: 2%;
+    padding: 2%;
+    display: flex;
+
 }
 .line-pad-title{
     display: flex;
@@ -61,4 +63,24 @@ body{
 }
 .TwPerDayData{
     text-align: center;
+}
+.piechartDiv{
+    background-color: white;
+    width:50%;
+}
+.multlinechartDiv{
+    width: 50%;
+}
+/* piechart legend1 */
+
+.multlinechartDiv li span {
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.multlinechartDiv {
+    list-style: none;
+    align-self: center;
 }
