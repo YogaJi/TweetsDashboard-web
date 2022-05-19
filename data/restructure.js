@@ -5,7 +5,10 @@ var RawArr = [];
 
 var dateArr = [];
 var tweetsPerDayArr = [];
-var geo_nameArr = [];
+
+var geo_countryArr = [];
+var geo_countryCountArr = [];
+var googleGeoData = []
 
 var analysisArr = [];
 var attitudeArr = [];
@@ -23,13 +26,13 @@ $.ajax({
                for(let key in obj){
 
                    if(key === "date"){
-                       console.log(obj[key]);
+                       //console.log(obj[key]);
                        var leg = Object.keys(obj[key]).length;
                        for(i = 0; i< leg; i++){
                            var dates = getDates(obj[key][i]);
                            rawDateArr.push(dates)
                        }
-                        console.log("rawDateArr:",rawDateArr);
+                        //console.log("rawDateArr:",rawDateArr);
 
                        var countTweets = [];
                        for (var i = 0; i < rawDateArr.length; i++) {
@@ -45,14 +48,44 @@ $.ajax({
                          for(i = 0; i< arr1.length; i++){
                              dateArr.push(arr1[i])
                          }
-                         console.log("dateArr:",dateArr);
+                         //console.log("dateArr:",dateArr);
                          var arr2 = Object.values(countTweets);
                          for(i = 0; i< arr2.length; i++){
                              tweetsPerDayArr[i] = arr2[i]
                          }
 
-                   }else if(key == "geo_name"){
-                           geo_nameArr.push(obj[key]);
+                   }else if(key == "geo_country_code"){
+                       var countries = []
+                       var leg = Object.keys(obj[key]).length;
+                       for(i = 0; i< leg; i++){
+                           var c = obj[key][i];
+                           countries.push(c)
+                       }
+                        //console.log("countries",countries);
+                        //console.log(":countries.length",countries.length);
+
+                        var countCountry = [];
+                        for (var i = 0; i < countries.length; i++) {
+                              var v = countries[i];
+                              var counts = countCountry[v];
+                              if (counts) {
+                                  countCountry[v] += 1;
+                              } else {
+                                  countCountry[v] = 1;
+                              }
+                          }
+                          //console.log("countCountry",countCountry);
+
+                           var ar = Object.keys(countCountry);
+                           var ar2 = Object.values(countCountry);
+
+                           for(i = 0; i< ar.length; i++){
+                               googleGeoData[i] = [ar[i],ar2[i]];
+                           }
+
+                            googleGeoData.unshift(['Country', 'Tweets']);
+                            //console.log("googleGeoData",googleGeoData);
+
 
                    }else if(key === "analysis"){
                        var leg = Object.keys(obj[key]).length;
@@ -86,7 +119,7 @@ $.ajax({
                         //console.log("analysisArr:",analysisArr);
 
                    }else if(key == "text"){
-                           textArr.push(obj[key]);
+                           //textArr.push(obj[key]);
                    }else if(key == "geo_geo_bbox"){
                            geoLocationArr.push(obj[key]);
                    }
@@ -129,6 +162,9 @@ function combineDatesAndAttitude(a,b){
 
 dateAndAttArr = combineDatesAndAttitude(rawDateArr,RawArr)
 //console.log("dateAndAttArr:",dateAndAttArr);
+
+//combine geo country with tweets count
+
 var postiveCount = 0;
 var neutralCount = 0;
 var negativeCount = 0;
@@ -140,15 +176,14 @@ var postiveCountArrData = [];
 var neutralCountArrData = [];
 var negativeCountArrData = [];
 
-//console.log(dateAndAttArr[0][0]);
-for(i = 0; i< dateAndAttArr.length; i++){
-    for(y = 0; y< dateArr.length; y++){
+for(y = 0; y< dateArr.length; y++){
+    for(i = 0; i< dateAndAttArr.length; i++){
 
         if(dateAndAttArr[i][0] == dateArr[y]){
 
-            if(dateAndAttArr[i][1] == "Positive"){
-                negativeCount ++;
-                postiveCountArr[dateArr[y]] = negativeCount;
+            if(dateAndAttArr[i][1] === "Positive"){
+                postiveCount ++;
+                postiveCountArr[dateArr[y]] = postiveCount;
 
             }else if(dateAndAttArr[i][1] == "Neutral"){
                 neutralCount ++;
@@ -159,7 +194,12 @@ for(i = 0; i< dateAndAttArr.length; i++){
             }
         }
     }
+    postiveCount = 0;
+    neutralCount = 0;
+    negativeCount = 0;
 }
+//console.log("postiveCountArr:",postiveCountArr);
+
 function getAttitudeData(a){
     var arr = Object.values(a);
     var attributeData = []

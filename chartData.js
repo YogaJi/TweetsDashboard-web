@@ -110,3 +110,40 @@ const mixedChart = new Chart(ctx3, {
         labels: dateArr
     }
 });
+
+
+//google geo chart
+google.charts.load('current', {
+        'packages':['geochart'],
+      });
+      google.charts.setOnLoadCallback(drawRegionsMap);
+
+      function drawRegionsMap() {
+        var data = google.visualization.arrayToDataTable(googleGeoData);
+
+        var Goptions = {
+            height: 400,
+            enableRegionInteractivity: true,
+            colorAxis: {colors: ['#FFCAC2', '#FF6A88','#D0002D']},
+            region: 'world',
+            legend:{
+                textStyle: {
+                    color: 'grey',
+                    fontSize: 16
+                }
+
+            }
+
+        };
+
+        var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+
+        chart.draw(data, Goptions);
+        google.visualization.events.addListener(chart, 'select', function () {
+           var selection = chart.getSelection();
+           var value = data.getValue(selection[0].row, 0);
+           calculateAttitude();
+       });
+
+
+    }// end of func
