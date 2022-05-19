@@ -38,7 +38,6 @@ const myChart2 = new Chart(ctx2, {
         }]
     },
     options: {
-
         title: {
             display: true,
             text: 'tweets Sentiments Percentage Breakdown',
@@ -111,39 +110,103 @@ const mixedChart = new Chart(ctx3, {
     }
 });
 
-
 //google geo chart
 google.charts.load('current', {
         'packages':['geochart'],
       });
-      google.charts.setOnLoadCallback(drawRegionsMap);
+google.charts.setOnLoadCallback(drawRegionsMap);
 
-      function drawRegionsMap() {
-        var data = google.visualization.arrayToDataTable(googleGeoData);
+function drawRegionsMap() {
+    var data = google.visualization.arrayToDataTable(googleGeoData);
+    var Goptions = {
+        height: 400,
+        enableRegionInteractivity: true,
+        colorAxis: {colors: ['#FFCAC2', '#FF6A88','#D0002D']},
+        region: 'world',
+        legend:{
+            textStyle: {
+                color: 'grey',
+                fontSize: 16
+            }
+        }
 
-        var Goptions = {
-            height: 400,
-            enableRegionInteractivity: true,
-            colorAxis: {colors: ['#FFCAC2', '#FF6A88','#D0002D']},
-            region: 'world',
-            legend:{
-                textStyle: {
-                    color: 'grey',
-                    fontSize: 16
-                }
+    };
+
+    var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+    chart.draw(data, Goptions);
+
+    google.visualization.events.addListener(chart, 'select', function () {
+       var selection = chart.getSelection();
+       if(selection.length === 0){
+           //console.log("selection",selection);
+           calculateShowDataInCountry([0,0,0]);
+       }else{
+           var value = data.getValue(selection[0].row, 0);
+           calculateAtti(value);
+       }
+
+    });
+}
+
+//line chart
+const ctx4 = document.getElementById('geo-linechart')
+const myChart4 = new Chart(ctx4, {
+    type: 'bar',
+    data: {
+        labels: ["Positive","Neutral","Negative"],
+        datasets: [{
+            label: 'tweets Sentiments',
+            //data: countryData,
+            data: 0,
+            fill: false,
+            backgroundColor: [
+                'rgb(255, 205, 86, 0.4)',
+                'rgb(54, 162, 235, 0.4)',
+                'rgb(255, 99, 132, 0.4)',
+
+            ],
+            borderColor: [
+                'rgb(255, 205, 86)',
+                'rgb(54, 162, 235)',
+                'rgb(255, 99, 132)',
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        animation:{
+            easing: 'easeOutQuart'
+        },
+        scales:{
+            x: {
+               grid: {
+                 color: '#f2f2f2',
+                 tickColor: '#f2f2f2'
+               }
+           },
+           y: {
+              grid: {
+                color: 'white'
+              }
+          },
+        },
+        responsive:true,
+        indexAxis: 'y',
+        plugins: {
+            legend: {
+                display: true,
+                position:'bottom',
+                align:'end',
+            },
+            labels:{
+                render:'value',
+                fontStyle: 'border',
+                fontColor: '#707070',
+                position:'outside',
 
             }
+        }
+    },
+    //plugins:[ChartDataLabels]
 
-        };
-
-        var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
-
-        chart.draw(data, Goptions);
-        google.visualization.events.addListener(chart, 'select', function () {
-           var selection = chart.getSelection();
-           var value = data.getValue(selection[0].row, 0);
-           calculateAttitude();
-       });
-
-
-    }// end of func
+});

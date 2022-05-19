@@ -14,7 +14,6 @@
     }
     #regions_div{
         width: 200px;
-        background-color: red;
     }
  }
 
@@ -41,9 +40,12 @@
 }
 
 /* XX-Large devices (larger desktops, 1400px and up) */
-@media (min-width: 1400px) {
+@media (min-width: 1300px) {
     .piechartDiv {
-        height: 600px;
+        height: 300px;
+    }
+    #regions_div{
+        width: 700px;
     }
 
 }

@@ -2,7 +2,8 @@
 var rawDateArr = [];
 //count all the attitude
 var RawArr = [];
-
+//country raw value
+var countries = []
 var dateArr = [];
 var tweetsPerDayArr = [];
 
@@ -55,7 +56,7 @@ $.ajax({
                          }
 
                    }else if(key == "geo_country_code"){
-                       var countries = []
+
                        var leg = Object.keys(obj[key]).length;
                        for(i = 0; i< leg; i++){
                            var c = obj[key][i];
