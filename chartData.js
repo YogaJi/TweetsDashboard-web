@@ -139,6 +139,7 @@ function drawRegionsMap() {
        if(selection.length === 0){
            //console.log("selection",selection);
            calculateShowDataInCountry([0,0,0]);
+           document.getElementById("selectCountry").innerHTML= "TWEETS SENTIMENTS";
        }else{
            var value = data.getValue(selection[0].row, 0);
            calculateAtti(value);

@@ -25,7 +25,7 @@ var langList = [];
 var langCountEach = [];
 
 $.ajax({
-            url: "./data/tweet_processed.json",
+            url: "./data/tweet_processed-2.json",
             type: "GET",
             async: false,
             dataType: "json",
@@ -99,7 +99,7 @@ $.ajax({
                               }
 
                           }
-                          //console.log("countCountry",countCountry);
+                          console.log("countCountry",countCountry);
 
                            var ar = Object.keys(countCountry);
                            var ar2 = Object.values(countCountry);
