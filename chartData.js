@@ -1,4 +1,3 @@
-
 //line chart
 const ctx = document.getElementById('linechart')
 const myChart = new Chart(ctx, {

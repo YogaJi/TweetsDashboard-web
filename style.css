@@ -26,12 +26,12 @@ body{
 .previous{
     margin-top: 4%;
 }
-.previous-period{
+/* .previous-period{
     background-color: yellow;
 }
 .previous-month{
     background-color: green;
-}
+} */
 .count-center{
     text-align: center;
 }
