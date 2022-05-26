@@ -13,6 +13,8 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.0.0/chartjs-plugin-datalabels.min.js" integrity="sha512-R/QOHLpV1Ggq22vfDAWYOaMd5RopHrJNMxi8/lJu8Oihwi4Ho4BRFeiMiCefn9rasajKjnx9/fTQ/xkWnkDACg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://unpkg.com/chart.js-plugin-labels-dv/dist/chartjs-plugin-labels.min.js"></script>
+    <!-- Load d3.js -->
+    <script src="https://d3js.org/d3.v4.js"></script>
     <!-- JQuery Core -->
     <script src="js/core/jquery.min.js"></script>
     <script src="data/restructure.js"></script>
@@ -51,7 +53,7 @@
         <div class="row first-pad">
             <div class="div1 col">
                 <p>TWEETS COUNT</p>
-                <h1 id="countTws" class="count-center">96</h1>
+                <h1 id="countTws" class="count-center">0</h1>
                 <div class="previous row">
                     <div class="col previous-period">
                         <p>Previous period</p>
@@ -65,13 +67,13 @@
             </div>
             <div class="div2 col">
                 <div class="row" style="display:block;height:100%">
-                    <div class="col" style="background-color:white;padding-bottom:2%;">
-                        <p>MENTION COUNT</p>
-                        <h2 class="count-center">191</h2>
+                    <div class="col" style="background-color:white;padding: 2% 0% 1% 4%;">
+                        <p>TOTAL REPLIES</p>
+                        <h2 id="sumReply" class="count-center">191</h2>
                     </div>
-                    <div class="col" style="background-color:white;height: 50%; padding-bottom:2%;">
-                        <p>FOLLOWERS COUNT</p>
-                        <h2 class="count-center">678</h2>
+                    <div class="col" style="background-color:white;height: 50%;padding: 0% 0% 2% 4%;">
+                        <p>AVERAGE LIKES</p>
+                        <h2 id="avgLike" class="count-center">0</h2>
                     </div>
                 </div>
             </div>
@@ -80,9 +82,12 @@
 
         <div class="line-pad">
             <div class="line-pad-title">
-                <p>Total</p>
+                <p>Total Tweets</p>
                 <div class="line-pad-time">
-                    <p>From</p><p>05011</p><p>To</p><p>0511</p>
+                    <p class="text-light-grey">From</p>
+                    <p id="fromDate" class="text-grey">0501</p>
+                    <p class="text-light-grey">To</p>
+                    <p id="toDate" class="text-grey">0511</p>
                 </div>
 
             </div>
@@ -154,9 +159,8 @@
 
 
     <!-- custom js -->
-
     <script src="./chartData.js"></script>
-
+    <script src="./js/staticDataFunc.js"></script>
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 

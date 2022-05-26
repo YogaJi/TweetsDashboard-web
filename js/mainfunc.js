@@ -1,9 +1,7 @@
 function calculateAtti(value){
-    console.log("value:",value);
-
+    //console.log("value:",value);
     var valueArr = [countries, RawArr];
-    console.log(valueArr);
-
+    //console.log(valueArr);
     var postiveCount = 0;
     var negativeCount = 0;
     var neutralCount = 0;

@@ -1,6 +1,13 @@
 body{
     background-color: #F5F6FA
 }
+/* text colors */
+.text-light-grey{
+    color: #c2c2c2;
+}
+.text-grey{
+    color:#404040;
+}
 .first-pad{
     margin-inline: auto;
     margin-top: 2%;
@@ -9,8 +16,8 @@ body{
 .div1{
     background-color: white;
     width:100%;
-        margin-right: 1%;
-        padding-top: 2%;
+    margin-right: 1%;
+    padding-top: 1%;
 
 }
 .div2{
@@ -34,9 +41,10 @@ body{
 } */
 .count-center{
     text-align: center;
+    color: #44A1FC;
 }
 .col p{
-    font-size: 9px;
+    font-size: 12px;
 }
 /* modify pad div */
 .line-pad{

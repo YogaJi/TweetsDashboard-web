@@ -45,7 +45,7 @@ $.ajax({
                        }
 
                        for (var i = 0; i < arr.length; i++) {
-                           rawDateArr.unshift(arr[i]);          
+                           rawDateArr.unshift(arr[i]);
                        }
                         //console.log("rawDateArr:",rawDateArr);
                        // date = obj[i]["created_at"].slice(5,10);
@@ -109,7 +109,7 @@ $.ajax({
                            }
 
                             googleGeoData.unshift(['Country', 'Tweets']);
-                            console.log("googleGeoData",googleGeoData);
+                            //console.log("googleGeoData",googleGeoData);
 
 
                    }else if(key === "analysis"){

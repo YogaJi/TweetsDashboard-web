@@ -9,7 +9,7 @@ const myChart = new Chart(ctx, {
             data: tweetsPerDayArr,
             fill: false,
             borderColor: 'rgb(75, 192, 192)',
-            tension: 0.1
+            tension: 0.3
         }]
     },
     options: {
@@ -91,7 +91,7 @@ const mixedChart = new Chart(ctx3, {
             type: 'line',
             label: 'postive',
             data: postiveCountArrData,
-
+            tension: 0.1,
             borderColor: 'rgb(255, 205, 86)'
         }, {
             type: 'line',
